@@ -40,7 +40,7 @@ typedef struct instruction_s
 
 
 int main (int argc, char *argv[]);
-void push(int value);
+void push(int value, int line_num);
 void pall(void);
 void processFile(FILE *file);
 

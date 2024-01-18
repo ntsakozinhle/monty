@@ -6,14 +6,15 @@ int top = -1;
 /**
  * push - a fuction to push an element onto the stack
  * @value: int to be pushed
+ * @line_num: num to be added
  * Return: void
  */
 
-void push(int value)
+void push(int value, int line_num)
 {
 	if (top == STACK_SIZE - 1)
 	{
-		fprintf(stderr, "stack overflow: push operation failed\n");
+		fprintf(stderr, "L%d Error: Stack overflow\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
@@ -28,11 +29,6 @@ void push(int value)
 void pall(void)
 {
 	int i;
-
-	if (top == -1)
-	{
-		return;
-	}
 	
 	for (i = top; i >= 0; i--)
 	{
@@ -51,6 +47,7 @@ void processFile(FILE *file)
 	char line[256], *token;
 	size_t len;
 	int line_num = 0;
+	int value;
 
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
@@ -76,7 +73,15 @@ void processFile(FILE *file)
 				fprintf(stderr, "Error: L%d: push requires an argument\n", line_num);
 				exit(EXIT_FAILURE);
 			}
-			push(atoi(token));
+			
+			value = atoi(token);
+			if (value == 0 && *token != '0')
+			{
+				fprintf(stderr, "L%d: Error: push argument must be an interger\n", line_num);
+				exit(EXIT_FAILURE);
+			}
+
+			push(value, line_num);
 		}
 		else if (strcmp(token, "pall") == 0)
 		{
