@@ -1,8 +1,9 @@
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef MONTY_H
+#define MONTY_H
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define STACK_SIZE 100
 
@@ -37,8 +38,10 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+
+int main (int argc, char *argv[]);
 void push(int value);
 void pall(void);
-
+void processFile(FILE *file);
 
 #endif
