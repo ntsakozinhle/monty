@@ -43,6 +43,7 @@ int main (int argc, char *argv[]);
 void push(int value, int line_num);
 void pall(void);
 void pint(int line_num);
+void pop(int line_num);
 void processFile(FILE *file);
 
 #endif

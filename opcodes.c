@@ -52,3 +52,20 @@ void pint(int line_num)
 
 	printf("%d\n", stack[top]);
 }
+
+/**
+ * pop - function to remove the top element of the stack
+ * @line_num:  value to be removed
+ * Return: void
+ */
+
+void pop(int line_num)
+{
+	if (top == -1)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+
+	top--;
+}

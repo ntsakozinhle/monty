@@ -55,6 +55,10 @@ void processFile(FILE *file)
 		{
 			pint(line_num);
 		}
+		else if (strcmp(token, "pop") == 0)
+		{
+			pop(line_num);
+		}
 		else
 		{
 			fprintf(stderr, "L%d: Error: unknown instruction %s\n", line_num, token);
