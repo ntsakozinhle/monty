@@ -69,3 +69,24 @@ void pop(int line_num)
 
 	top--;
 }
+
+/**
+ * swap - a function to swap the top two elements of the stack
+ * @line_num - value to be swapped
+ * Return: void
+ */
+
+void swap(int line_num)
+{
+	int temp;
+
+	if (top < 1)
+	{
+		fprintf(stderr, "L%d: Error: can't swap, stack too short\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = stack[top];
+	stack[top] = stack[top - 1];
+	stack[top - 1] = temp;
+}

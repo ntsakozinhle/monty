@@ -59,6 +59,10 @@ void processFile(FILE *file)
 		{
 			pop(line_num);
 		}
+		else if (strcmp(token, "swap") == 0)
+		{
+			swap(line_num);
+		}
 		else
 		{
 			fprintf(stderr, "L%d: Error: unknown instruction %s\n", line_num, token);
