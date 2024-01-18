@@ -77,7 +77,7 @@ void processFile(FILE *file)
 			value = atoi(token);
 			if (value == 0 && *token != '0')
 			{
-				fprintf(stderr, "L%d: Error: push argument must be an interger\n", line_num);
+				fprintf(stderr, "L%d: usage: push integer\n", line_num);
 				exit(EXIT_FAILURE);
 			}
 
