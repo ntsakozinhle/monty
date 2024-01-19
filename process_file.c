@@ -71,6 +71,10 @@ void processFile(FILE *file)
 		{
 			sub(line_num);
 		}
+		else if (strcmp(token, "div") == 0)
+		{
+			divide(line_num);
+		}
 		else if (strcmp(token, "nop") == 0)
 		{
 			nop(line_num);

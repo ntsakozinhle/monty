@@ -47,3 +47,27 @@ void sub(int line_num)
 	stack[top - 1] -= stack[top];
 	pop(line_num);
 }
+
+/**
+ * divide - a function that devides the 2 elements at the top of the stack
+ * @line_num: elements to be divided
+ * Return: void
+ */
+
+void divide(int line_num)
+{
+	if (top < 1)
+	{
+		fprintf(stderr, "L%d: Error: can't div, stack too short\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+
+	if (stack[top] == 0)
+	{
+		fprintf(stderr, "L%d: Error: division by zero\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+
+	stack[top - 1] /= stack[top];
+	pop(line_num);
+}
