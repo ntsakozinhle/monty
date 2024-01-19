@@ -75,6 +75,14 @@ void processFile(FILE *file)
 		{
 			divide(line_num);
 		}
+		else if (strcmp(token, "mul") == 0)
+		{
+			multiply(line_num);
+		}
+		else if (strcmp(token, "mod") == 0)
+		{
+			mod(line_num);
+		}
 		else if (strcmp(token, "nop") == 0)
 		{
 			nop(line_num);

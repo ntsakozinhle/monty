@@ -50,6 +50,8 @@ void swap(int line_num);
 void add(int line_num);
 void sub(int line_num);
 void divide(int line_num);
+void multiply(int line_num);
+void mod(int line_num);
 void nop(int line_num);
 void processFile(FILE *file);
 
