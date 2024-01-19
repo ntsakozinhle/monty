@@ -7,6 +7,8 @@
 
 #define STACK_SIZE 100
 
+extern int stack[STACK_SIZE];
+extern int top;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -45,6 +47,7 @@ void pall(void);
 void pint(int line_num);
 void pop(int line_num);
 void swap(int line_num);
+void add(int line_num);
 void processFile(FILE *file);
 
 #endif

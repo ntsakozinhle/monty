@@ -63,6 +63,10 @@ void processFile(FILE *file)
 		{
 			swap(line_num);
 		}
+		else if (strcmp(token, "add") == 0)
+		{
+			add(line_num);
+		}
 		else
 		{
 			fprintf(stderr, "L%d: Error: unknown instruction %s\n", line_num, token);
