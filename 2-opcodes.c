@@ -10,7 +10,7 @@ void add(int line_num)
 {
 	if (top < 1)
 	{
-		fprintf(stderr, "L%d: Error: can't add, stack too short\n", line_num);
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
@@ -40,7 +40,7 @@ void sub(int line_num)
 {
 	if (top < 1)
 	{
-		fprintf(stderr, "L%d: Error: can't sub, stack too short\n", line_num);
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
@@ -58,13 +58,13 @@ void divide(int line_num)
 {
 	if (top < 1)
 	{
-		fprintf(stderr, "L%d: Error: can't div, stack too short\n", line_num);
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
 	if (stack[top] == 0)
 	{
-		fprintf(stderr, "L%d: Error: division by zero\n", line_num);
+		fprintf(stderr, "L%d: division by zero\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 

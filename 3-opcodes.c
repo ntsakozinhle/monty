@@ -11,7 +11,7 @@ void multiply(int line_num)
 {
 	if (top < 1)
 	{
-		fprintf(stderr, "L%d: Error: can't mul, stack too short\n", line_num);
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
@@ -30,13 +30,13 @@ void mod(int line_num)
 {
 	if (top < 1)
 	{
-		fprintf(stderr, "L%d: Error: can't mod, stack too short\n", line_num);
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 
 	if (stack[top] == 0)
 	{
-		fprintf(stderr, "L%d: Error: division by zero\n", line_num);
+		fprintf(stderr, "L%d: division by zero\n", line_num);
 		exit(EXIT_FAILURE);
 	}
 

@@ -42,6 +42,10 @@ typedef struct instruction_s
 
 
 int main (int argc, char *argv[]);
+int readLine(FILE *file, char *line);
+void parseLine(char *line, char **instruction, int *value);
+void handlePush(int value, int line_num);
+void handleInstruction(char *instruction, int line_num);
 void push(int value, int line_num);
 void pall(void);
 void pint(int line_num);
