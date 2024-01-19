@@ -43,3 +43,29 @@ void mod(int line_num)
 	stack[top - 1] %= stack[top];
 	pop(line_num);
 }
+
+/**
+ * pchar - a function that prints the char at the top of the stack
+ * @line_num: element to print
+ * Return: void
+ */
+
+void pchar(int line_num)
+{
+	int value;
+
+	if (top == -1)
+	{
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+
+	value = stack[top];
+
+	if (value < 0 || value > 127)
+	{
+		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", (char)value);
+}

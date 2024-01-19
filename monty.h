@@ -50,6 +50,7 @@ void push(int value, int line_num);
 void pall(void);
 void pint(int line_num);
 void pop(int line_num);
+void pchar(int line_num);
 void swap(int line_num);
 void add(int line_num);
 void sub(int line_num);

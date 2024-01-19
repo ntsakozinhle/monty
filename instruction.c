@@ -19,6 +19,8 @@ void handleInstruction(char *instruction, int line_num)
 				pint(line_num);
 			else if (strcmp(instruction, "pop") == 0)
 				pop(line_num);
+			else if (strcmp(instruction, "pchar") == 0)
+				pchar(line_num);
 			break;
 		case 's':
 			if (strcmp(instruction, "swap") == 0)
