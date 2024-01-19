@@ -67,6 +67,10 @@ void processFile(FILE *file)
 		{
 			add(line_num);
 		}
+		else if (strcmp(token, "nop") == 0)
+		{
+			nop(line_num);
+		}
 		else
 		{
 			fprintf(stderr, "L%d: Error: unknown instruction %s\n", line_num, token);

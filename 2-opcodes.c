@@ -17,3 +17,14 @@ void add(int line_num)
 	stack[top - 1] += stack[top];
 	pop(line_num);
 }
+
+/**
+ * nop - a function that does nothing
+ * @line_num: voided
+ * Return: void
+ */
+
+void nop(int line_num)
+{
+	(void)line_num;
+}
