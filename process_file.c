@@ -67,6 +67,10 @@ void processFile(FILE *file)
 		{
 			add(line_num);
 		}
+		else if (strcmp(token, "sub") == 0)
+		{
+			sub(line_num);
+		}
 		else if (strcmp(token, "nop") == 0)
 		{
 			nop(line_num);

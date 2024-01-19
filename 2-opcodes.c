@@ -28,3 +28,22 @@ void nop(int line_num)
 {
 	(void)line_num;
 }
+
+/**
+ * sub - a fuction that subtracts the top element from the
+ * second element of the stack
+ * @line_num: values to be subtracted
+ * Return: void
+ */
+
+void sub(int line_num)
+{
+	if (top < 1)
+	{
+		fprintf(stderr, "L%d: Error: can't sub, stack too short\n", line_num);
+		exit(EXIT_FAILURE);
+	}
+
+	stack[top - 1] -= stack[top];
+	pop(line_num);
+}
