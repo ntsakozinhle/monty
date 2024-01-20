@@ -10,22 +10,23 @@ void processFile(FILE *file)
 {
 	char line[256];
 	char *instruction;
-	int line_num = 0, value;
+	int line_number = 0, value;
+	stack_t *stack = NULL;
 
 	while (readLine(file, line))
 	{
-		line_num++;
+		line_number++;
 		parseLine(line, &instruction, &value);
 
 		if (instruction != NULL)
 		{
 			if (strcmp(instruction, "push") == 0)
 			{
-				handlePush(value, line_num);
+				handlePush(value, line_number, &stack);
 			}
 			else
 			{
-				handleInstruction(instruction, line_num);
+				handleInstruction(instruction, &stack, line_number);
 			}
 		}
 	}

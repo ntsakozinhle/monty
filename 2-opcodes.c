@@ -2,72 +2,77 @@
 
 /**
  * add - a function to add the top two elements of the stack
- * @line_num: ints to be added
+ * @stack: pointer to stack
+ * @line_number: ints to be added
  * Return: reslut of two ints
  */
 
-void add(int line_num)
+void add(stack_t **stack, unsigned int line_number)
 {
 	if (top < 1)
 	{
-		fprintf(stderr, "L%d: can't add, stack too short\n", line_num);
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	stack[top - 1] += stack[top];
-	pop(line_num);
+	(*stack)->n += (*stack)->next->n;
+	pop(stack, line_number);
 }
 
 /**
  * nop - a function that does nothing
- * @line_num: voided
+ * @stack: pointer to stack
+ * @line_number: voided
  * Return: void
  */
 
-void nop(int line_num)
+void nop(stack_t **stack, unsigned int line_number)
 {
-	(void)line_num;
+	(void)stack;
+	(void)line_number;
 }
 
 /**
  * sub - a fuction that subtracts the top element from the
  * second element of the stack
- * @line_num: values to be subtracted
+ * @stack: pointer to stack
+ * @line_number: values to be subtracted
  * Return: void
  */
 
-void sub(int line_num)
+void sub(stack_t **stack, unsigned int line_number)
 {
 	if (top < 1)
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", line_num);
+		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	stack[top - 1] -= stack[top];
-	pop(line_num);
+	(*stack)->next->n -= (*stack)->n;
+	pop(stack, line_number);
 }
 
 /**
  * divide - a function that devides the 2 elements at the top of the stack
- * @line_num: elements to be divided
+ * @stack: pointer to stack
+ * @line_number: elements to be divided
  * Return: void
  */
 
-void divide(int line_num)
+void divide(stack_t **stack, unsigned int line_number)
 {
 	if (top < 1)
 	{
-		fprintf(stderr, "L%d: can't div, stack too short\n", line_num);
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	if (stack[top] == 0)
+	if ((*stack)->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero\n", line_num);
+		fprintf(stderr, "L%d: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	stack[top - 1] /= stack[top];
-	pop(line_num);
+	(*stack)->next->n /= (*stack)->n;
+	pop(stack, line_number);
 }

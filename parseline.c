@@ -13,6 +13,9 @@ void parseLine(char *line, char **instruction, int *value)
 {
 	char *token;
 
+	while (*line == ' ' || *line == '\t')
+		line++;
+
 	token = strtok(line, " ");
 	*instruction = token;
 
@@ -22,6 +25,11 @@ void parseLine(char *line, char **instruction, int *value)
 		return;
 	}
 
-	token = strtok(NULL, " ");
+	while (token != NULL && (token[strlen(token) - 1] == ' ' || 
+				token[strlen(token) - 1] == '\t'))
+	{
+		token[strlen(token) - 1] = '\0';
+		token = strtok(NULL, " ");
+	}
 	*value = (token == NULL) ? 0 : atoi(token);
 }

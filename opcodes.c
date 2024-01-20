@@ -1,92 +1,131 @@
 #include "monty.h"
 
+/**
+ * struct instruction_t - opcode and its function
+ * @opcodes: the opcode
+ */
+
+instruction_t opcodes[] = {
+	{"push", push},
+	{"pall", pall},
+	{"pint", pint},
+	{"pop", pop},
+	{"pchar", pchar},
+	{"swap", swap},
+	{"add", add},
+	{"sub", sub},
+	{"divide", divide},
+	{"mul", multiply},
+	{"mod", mod},
+	{"nop", nop},
+	{NULL, NULL}
+};
+
+
 int stack[STACK_SIZE];
 int top = -1;
 
 /**
  * push - a fuction to push an element onto the stack
- * @value: int to be pushed
- * @line_num: num to be added
+ * @stack: pointer to stack
+ * @line_number: num to be added
  * Return: void
  */
 
-void push(int value, int line_num)
+void push(stack_t **stack, unsigned int line_number)
 {
-	if (top == STACK_SIZE - 1)
+	int val;
+	
+	if (value == NULL)
 	{
-		fprintf(stderr, "L%d: Stack overflow\n", line_num);
+		fprintf(stderr, "L%d: stack overflow\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	stack[++top] = value;
+	val = atoi(value);
+
+	if (top == STACK_SIZE - 1)
+	{
+		fprintf(stderr, "L%d: Stack overflow\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	(*stack)[++top].n = val;
 }
 
 /**
  * pall - a function to print all values on the stack
+ * @stack: pointer to stack
+ * @line_number: line to be printed
  * Return: void
  */
 
-void pall(void)
+void pall(stack_t **stack, unsigned int line_number)
 {
 	int i;
 	
 	for (i = top; i >= 0; i--)
 	{
-		printf("%d\n", stack[i]);
+		printf("%d\n", (*stack)[i].n);
 	}
+	(void)line_number;
 }
 
 /**
  * pint - function to print the value at the top of the stack
- * @line_num: value to be printed
+ * @stack: pointer to stack
+ * @line_number: value to be printed
  * Return: void
  */
 
-void pint(int line_num)
+void pint(stack_t **stack, unsigned int line_number)
 {
 	if (top == -1)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_num);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	printf("%d\n", stack[top]);
+	printf("%d\n", (*stack)[top].n);
 }
 
 /**
  * pop - function to remove the top element of the stack
- * @line_num:  value to be removed
+ * @stack: pointer to stack
+ * @line_number:  value to be removed
  * Return: void
  */
 
-void pop(int line_num)
+void pop(stack_t **stack, unsigned int line_number)
 {
 	if (top == -1)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", line_num);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	top--;
+	(void)stack;
 }
 
 /**
  * swap - a function to swap the top two elements of the stack
- * @line_num - value to be swapped
+ * @stack: pointer to the stack
+ * @line_number - value to be swapped
  * Return: void
  */
 
-void swap(int line_num)
+void swap(stack_t **stack, unsigned int line_number)
 {
 	int temp;
 
 	if (top < 1)
 	{
-		fprintf(stderr, "L%d: can't swap, stack too short\n", line_num);
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	temp = stack[top];
-	stack[top] = stack[top - 1];
-	stack[top - 1] = temp;
+	temp = (*stack)[top].n;
+	(*stack)[top].n = (*stack)[top - 1].n;
+	(*stack)[top - 1].n = temp;
 }
