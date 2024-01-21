@@ -7,6 +7,8 @@
  * Return: file
  */
 
+char *value = NULL;
+
 int main(int argc, char *argv[])
 {
 	FILE *file;

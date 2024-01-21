@@ -4,13 +4,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stddef.h>
 
 #define STACK_SIZE 100
 
-extern int stack[STACK_SIZE];
-extern int top;
-extern char *value;
-extern struct instruction_t opcodes[];
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -26,6 +24,27 @@ typedef struct stack_s
         struct stack_s *prev;
         struct stack_s *next;
 } stack_t;
+
+
+/**
+ * struct instruction_s - opcode and its function
+ * @opcode: the opcode
+ * @f: function to handle the opcode
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO
+ */
+typedef struct instruction_s
+{
+        char *opcode;
+        void (*f)(stack_t **stack, unsigned int line_number);
+} instruction_t;
+
+
+extern int stack[STACK_SIZE];
+extern int top;
+extern char *value;
+extern instruction_t opcodes[];
 
 
 int main (int argc, char *argv[]);
@@ -46,42 +65,6 @@ void multiply(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void processFile(FILE *file);
-
-
-/**
- * struct instruction_s - opcode and its function
- * @opcode: the opcode
- * @f: function to handle the opcode
- *
- * Description: opcode and its function
- * for stack, queues, LIFO, FIFO
- */
-typedef struct instruction_s
-{
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
-} instruction_t;
-
-/**
- * struct instruction_t - opcode and its function
- * @opcodes: the opcode
- */
-
-instruction_t opcodes[] = {
-	{"push", push},
-	{"pall", pall},
-	{"pint", pint},
-	{"pop", pop},
-	{"pchar", pchar},
-	{"swap", swap},
-	{"add", add},
-	{"sub", sub},
-	{"divide", divide},
-	{"mul", multiply},
-	{"mod", mod},
-	{"nop", nop},
-	{NULL, NULL}
-};
 
 
 #endif

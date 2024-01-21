@@ -6,21 +6,20 @@
  */
 
 instruction_t opcodes[] = {
-	{"push", push},
-	{"pall", pall},
-	{"pint", pint},
-	{"pop", pop},
-	{"pchar", pchar},
-	{"swap", swap},
-	{"add", add},
-	{"sub", sub},
-	{"divide", divide},
-	{"mul", multiply},
-	{"mod", mod},
-	{"nop", nop},
-	{NULL, NULL}
+        {"push", push},
+        {"pall", pall},
+        {"pint", pint},
+        {"pop", pop},
+        {"pchar", pchar},
+        {"swap", swap},
+        {"add", add},
+        {"sub", sub},
+        {"div", divide},
+        {"mul", multiply},
+        {"mod", mod},
+        {"nop", nop},
+        {NULL, NULL}
 };
-
 
 int stack[STACK_SIZE];
 int top = -1;
