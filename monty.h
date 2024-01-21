@@ -41,10 +41,11 @@ typedef struct instruction_s
 } instruction_t;
 
 
-extern int stack[STACK_SIZE];
+extern int stack_array[STACK_SIZE];
 extern int top;
 extern char *value;
 extern instruction_t opcodes[];
+extern int queue_mode;
 
 
 int main (int argc, char *argv[]);
@@ -66,6 +67,8 @@ void multiply(stack_t **stack, unsigned int line_number);
 void mod(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+void stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void processFile(FILE *file);
 

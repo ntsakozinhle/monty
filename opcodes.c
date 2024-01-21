@@ -20,12 +20,15 @@ instruction_t opcodes[] = {
         {"mod", mod},
 	{"rotl", rotl},
 	{"rotr", rotr},
+	{"stack", stack},
+	{"queue", queue},
         {"nop", nop},
         {NULL, NULL}
 };
 
-int stack[STACK_SIZE];
+int stack_array[STACK_SIZE];
 int top = -1;
+int queue_mode = 0;
 
 /**
  * push - a fuction to push an element onto the stack
