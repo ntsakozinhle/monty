@@ -55,20 +55,17 @@ void mod(stack_t **stack, unsigned int line_number)
 
 void pchar(stack_t **stack, unsigned int line_number)
 {
-	int value;
-
 	if (top == -1)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	value = (*stack)->n;
-
-	if (value < 0 || value > 127)
+	if ((*stack)->n < 0 || (*stack)->n > 127)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	printf("%c\n", (char)value);
+	putchar((*stack)->n);
+	putchar('\n');
 }
