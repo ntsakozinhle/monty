@@ -18,6 +18,7 @@ instruction_t opcodes[] = {
         {"div", divide},
         {"mul", multiply},
         {"mod", mod},
+	{"rotl", rotl}
         {"nop", nop},
         {NULL, NULL}
 };

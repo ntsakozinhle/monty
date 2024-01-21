@@ -90,3 +90,32 @@ void pstr(stack_t **stack, unsigned int line_number)
 	}
 	putchar('\n');
 }
+
+/**
+ * rotl - a function that rotates the stack
+ * @stack: pointer to the head of the stack
+ * @line_number: line to execute
+ * Return: void
+ */
+
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *first, *last;
+
+	(void)line_number;
+
+	if (*stack != NULL && (*stack)->next != NULL)
+	{
+		first = *stack;
+		last = *stack;
+
+		while (last->next != NULL)
+			last = last->next;
+
+		*stack = first->next;
+		first->next = NULL;
+		last->next = first;
+		first->prev = last;
+		(*stack)->prev = NULL;
+	}
+}
