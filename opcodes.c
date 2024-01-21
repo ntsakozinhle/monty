@@ -11,6 +11,7 @@ instruction_t opcodes[] = {
         {"pint", pint},
         {"pop", pop},
         {"pchar", pchar},
+	{"pstr", pstr},
         {"swap", swap},
         {"add", add},
         {"sub", sub},
